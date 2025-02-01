@@ -7,17 +7,21 @@
 3. [Base URL](#base-url)
 4. [API Documentation](#api-documentation)
 
-    4.1 [Superheroes Management](#superheroes-management)
+   4.1 [Superheroes Management](#superheroes-management)
 
-    - Superhero data model.
-    - Endpoint **/api/v1/superheroes**
-    
+   - Superhero data model.
+   - Endpoint **/api/v1/superheroes**
+
 5. [Testing](#testing)
 6. [If I had more time](#if-i-had-more-time)
 
 ## Description
 
-Humble Superhero API is a simple yet powerful RESTful API that allows users to manage a collection of superheroes. Each superhero has a name, a superpower, and a "humility score" (rated from 0 to 10). The API enables users to add new superheroes and retrieve them in descending order of humility, promoting the idea that true heroes are both powerful and humble.
+Humble Superhero API is a simple yet powerful RESTful API that allows users to
+manage a collection of superheroes. Each superhero has a name, a superpower, and
+a "humility score" (rated from 0 to 10). The API enables users to add new
+superheroes and retrieve them in descending order of humility, promoting the
+idea that true heroes are both powerful and humble.
 
 ## System Requirements
 
@@ -33,10 +37,12 @@ The base URL for accessing the Humble Superhero API is:
 
 `http://localhost:8080/api/v1/`
 
-All endpoints for the Humble Superhero API can be accessed through this base URL.
+All endpoints for the Humble Superhero API can be accessed through this base
+URL.
 
 **Example Usage**  
-To make a request to the API, prepend the base URL to the endpoint path. For instance, to fetch the list of superheroes:
+To make a request to the API, prepend the base URL to the endpoint path. For
+instance, to fetch the list of superheroes:
 
 `GET http://localhost:8080/api/v1/superheroes`
 
@@ -48,12 +54,12 @@ To make a request to the API, prepend the base URL to the endpoint path. For ins
 
 Each superhero has the following attributes:
 
-| Column Name   | Data Type | Description                                         |
-| :------------ | :-------- | :-------------------------------------------------- |
-| id            | number    | A unique identifier for each superhero              |
-| name          | string    | The name of the superhero (must be unique)          |
-| superpower    | string    | A brief description of the superhero's ability      |
-| humilityScore | number    | A rating (1-10) indicating the superhero's humility |
+| Column Name   | Data Type     | Description                                         |
+| :------------ | :------------ | :-------------------------------------------------- |
+| id            | string (UUID) | A unique identifier (UUID) for each superhero       |
+| name          | string        | The name of the superhero (must be unique)          |
+| superpower    | string        | A brief description of the superhero's ability      |
+| humilityScore | number        | A rating (1-10) indicating the superhero's humility |
 
 #### 2. Create a new superhero
 
@@ -61,7 +67,8 @@ Endpoint
 
 - URL Path: `/api/v1/superheroes`
 - Method: `POST`
-- Description: This endpoint adds a new superhero. It accepts superhero details in the request body and returns the created superhero upon success.
+- Description: This endpoint adds a new superhero. It accepts superhero details
+  in the request body and returns the created superhero upon success.
 
 **Request Body**
 
@@ -73,7 +80,8 @@ The request must be in JSON format and include the following fields:
 
 **Example Request**
 
-Description: A `POST` request to the superheroes creation endpoint. It includes a superhero name, superpower and humility score.
+Description: A `POST` request to the superheroes creation endpoint. It includes
+a superhero name, superpower and humility score.
 
 ```
 
@@ -96,7 +104,7 @@ success message and the data of the added superhero.
 
 ```
 {
-    "id": "670bbb1f3bcef0e9e1d325b3",
+    "id": "b1477d7c-3ab2-4386-9976-a8f21f90281b",
     "name": "Spider-Man",
     "superpower": "Wall-crawling, spider-sense, agility",
     "humilityScore": 10
@@ -115,7 +123,8 @@ Description: Missing required fields or invalid data.
 
 Status code: **409 Conflict**
 
-Description: This response indicates that the request could not be processed because the superhero is already taken.
+Description: This response indicates that the request could not be processed
+because the superhero is already taken.
 
 ```
 {
@@ -129,7 +138,8 @@ Endpoint
 
 - URL Path: `/api/v1/superheroes`
 - Method: `GET`
-- Description: This endpoint retrieves a list of all superheroes, ordered by their humility score in descending order.
+- Description: This endpoint retrieves a list of all superheroes, ordered by
+  their humility score in descending order.
 
 **Example Request**
 
@@ -143,19 +153,20 @@ curl -X GET http://localhost:8080/api/v1/superheroes \
 
 Status code: **200 OK**
 
-Description: This status indicates that the request was successful, and the server returns a list of all superheroes.
+Description: This status indicates that the request was successful, and the
+server returns a list of all superheroes.
 
 ```
 {
     [
         {
-            "id": "670bbb1f3bcef0e9e1d325b3",
+            "id": "b1477d7c-3ab2-4386-9976-a8f21f90281b",
             "name": "Spider-Man",
             "superpower": "Wall-crawling, spider-sense, agility",
             "humilityScore": 10
         },
         {
-            "id": "670bbb1f3bcef0e9e1d325b7",
+            "id": "42d8ed8e-7325-4233-badb-08c1ccad7699",
             "name": "Batman",
             "superpower": "Genius intellect, martial arts, wealth",
             "humilityScore": 9
@@ -167,7 +178,8 @@ Description: This status indicates that the request was successful, and the serv
 
 Status code: **500 Internal Server Error**
 
-Description: This response indicates an unexpected error occurred during the retrieving data.
+Description: This response indicates an unexpected error occurred during the
+retrieving data.
 
 ```
 {
