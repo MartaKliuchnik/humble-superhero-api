@@ -12,8 +12,10 @@ export class SuperheroesController {
    * @description Create a new superhero
    */
   @Post()
-  createSuperhero(@Body() createSuperDto: CreateSuperheroDto): SuperheroEntity {
-    return this.superheroesService.createSuperhero(createSuperDto);
+  async createSuperhero(
+    @Body() CreateSuperheroDto: CreateSuperheroDto,
+  ): Promise<SuperheroEntity> {
+    return await this.superheroesService.createSuperhero(CreateSuperheroDto);
   }
 
   /**
@@ -21,7 +23,7 @@ export class SuperheroesController {
    * @description Get all superheroes sorted by humility score
    */
   @Get()
-  findAll(): SuperheroEntity[] {
-    return this.superheroesService.findAll();
+  async findAll(): Promise<SuperheroEntity[]> {
+    return await this.superheroesService.findAll();
   }
 }

@@ -14,7 +14,9 @@ export class SuperheroesService {
    * @returns {SuperheroEntity} - The newly created superhero.
    * @throws {ConflictException} - If a superhero with the same name already exists
    */
-  createSuperhero(createSuperheroDto: CreateSuperheroDto): SuperheroEntity {
+  async createSuperhero(
+    createSuperheroDto: CreateSuperheroDto,
+  ): Promise<SuperheroEntity> {
     const nameKey = createSuperheroDto.name.toLowerCase();
 
     // Check if a superhero with the same name already exists
@@ -62,7 +64,7 @@ export class SuperheroesService {
    * Retrieves all superheroes, sorted by humility score (highest first).
    * @returns {SuperheroEntity[]} - An array of superheroes sorted by humility score.
    */
-  findAll(): SuperheroEntity[] {
+  async findAll(): Promise<SuperheroEntity[]> {
     return [...this.superheroes];
   }
 }

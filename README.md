@@ -189,4 +189,17 @@ retrieving data.
 
 ## Testing
 
+This project has unit testing implemented to maintain high code quality and
+reliability.
+
+- **Unit Testing:** Files have extension .spec.ts. One testing file per service
+  or controller.
+
+**Testing commands:**
+
+Before tests use `cd ./server` to navigate to server directory.
+
+- Run tests: `npm run test`
+- Run tests in watch mode: `npm run test:watch`
+
 ## If I had more time
