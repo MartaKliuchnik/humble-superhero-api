@@ -1,4 +1,4 @@
-export class Superhero {
+export class SuperheroEntity {
   id: string;
   name: string;
   superpower: string;

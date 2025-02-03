@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { SuperheroesService } from './superheroes.service';
-import { Superhero } from './entities/superhero.entity';
+import { SuperheroEntity } from './entities/superhero.entity';
 import { CreateSuperheroDto } from './dto/create-superhero.dto';
 
 @Controller('superheroes')
@@ -12,7 +12,7 @@ export class SuperheroesController {
    * @description Create a new superhero
    */
   @Post()
-  createSuperhero(@Body() createSuperDto: CreateSuperheroDto): Superhero {
+  createSuperhero(@Body() createSuperDto: CreateSuperheroDto): SuperheroEntity {
     return this.superheroesService.createSuperhero(createSuperDto);
   }
 
@@ -21,7 +21,7 @@ export class SuperheroesController {
    * @description Get all superheroes sorted by humility score
    */
   @Get()
-  findAll(): Superhero[] {
+  findAll(): SuperheroEntity[] {
     return this.superheroesService.findAll();
   }
 }
