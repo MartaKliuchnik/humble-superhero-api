@@ -19,6 +19,13 @@ async function bootstrap() {
     }),
   );
 
+  app.enableCors({
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-CSRF-Token'],
+    credentials: true,
+  });
+
   const port = configService.get<number>('APP_PORT') || 4000;
   await app.listen(port);
 }
