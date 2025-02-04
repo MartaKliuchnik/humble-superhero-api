@@ -29,7 +29,6 @@ idea that true heroes are both powerful and humble.
 - **Backend**: Node.js framework - Nest.js
 - **Frontend framework**: React.js
 - **Database**: In-memory storage
-- **Containerization**: Docker
 
 ## Base URL
 
@@ -153,8 +152,7 @@ curl -X GET http://localhost:8080/api/v1/superheroes \
 
 Status code: **200 OK**
 
-Description: This status indicates that the request was successful, and the
-server returns a list of all superheroes.
+Description: This status indicates that the was successful. The server returns a list of all superheroes. If no superheroes exist, an empty array is returned.
 
 ```
 {
@@ -203,3 +201,22 @@ Before tests use `cd ./server` to navigate to server directory.
 - Run tests in watch mode: `npm run test:watch`
 
 ## If I had more time
+
+As I continue refining the Humble Superhero API, I’ve identified several improvements that will boost reliability, security, scalability, and ease of deployment:
+
+- **Persistent Database (PostgreSQL):** 
+  Right now, the API uses an in-memory database, which is great for quick development but loses all data when the
+  server restarts. Moving to PostgreSQL will provide permanent storage, better
+  data integrity, and scalability, making the API more reliable.
+
+- **Authentication & Authorization (JWT Security):**
+  Currently, anyone can add superheroes, which isn’t ideal for real-world applications. By implementing JWT-based authentication, only authorized users will be able to create or modify superheroes, ensuring better security and control over the data.
+
+- **Real-Time Updates (WebSockets):**
+  Imagine seeing new superheroes appear instantly without needing to refresh! Adding WebSockets will allow real-time updates, making the experience faster and more interactive, especially for users collaborating on the API.
+
+- **Dockerization for Consistent Environments:** 
+  Setting up Docker will allow the API to run consistently across different machines. This will eliminate the "it works on my machine" problem and make onboarding new developers and deployments seamless.
+
+- **CI/CD Pipeline for Automated Deployment & Testing:** 
+  Right now, deploying and testing require manual steps. Setting up a CI/CD pipeline will automate testing, code quality checks, and deployment processes, ensuring faster releases, fewer errors, and a smoother development cycle.

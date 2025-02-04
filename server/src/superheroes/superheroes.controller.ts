@@ -1,4 +1,10 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  InternalServerErrorException,
+  Post,
+} from '@nestjs/common';
 import { SuperheroesService } from './superheroes.service';
 import { SuperheroEntity } from './entities/superhero.entity';
 import { CreateSuperheroDto } from './dto/create-superhero.dto';
@@ -24,6 +30,12 @@ export class SuperheroesController {
    */
   @Get()
   async findAll(): Promise<SuperheroEntity[]> {
-    return await this.superheroesService.findAll();
+    try {
+      return await this.superheroesService.findAll();
+    } catch {
+      throw new InternalServerErrorException(
+        'An unexpected error occurred. Please try again later.',
+      );
+    }
   }
 }

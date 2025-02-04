@@ -1,4 +1,8 @@
-import { ConflictException, Injectable } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { SuperheroEntity } from './entities/superhero.entity';
 import { CreateSuperheroDto } from './dto/create-superhero.dto';
 import { v4 as uuidv4 } from 'uuid';
@@ -63,6 +67,12 @@ export class SuperheroesService {
    * @returns {SuperheroEntity[]} - An array of superheroes sorted by humility score.
    */
   async findAll(): Promise<SuperheroEntity[]> {
-    return [...this.superheroes];
+    try {
+      return [...this.superheroes];
+    } catch {
+      throw new InternalServerErrorException(
+        'An unexpected error occurred. Please try again later.',
+      );
+    }
   }
 }
