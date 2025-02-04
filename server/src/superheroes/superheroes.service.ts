@@ -30,8 +30,6 @@ export class SuperheroesService {
       ...createSuperheroDto,
     };
 
-    console.log(superhero);
-
     const index = this.findInsertionIndex(superhero.humilityScore);
     this.superheroes.splice(index, 0, superhero);
     this.superheroNames.add(nameKey);

@@ -11,8 +11,7 @@ export const getAllSuperheroes = async () => {
 			throw new Error('Failed to fetch superheroes');
 		}
 
-		const superheroes = await response.json();
-		return superheroes;
+		return await response.json();
 	} catch (error) {
 		console.error(error);
 		return [];
